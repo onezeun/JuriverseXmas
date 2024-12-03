@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start -p 3000",
+    "start": "next start -p 4000",
     "lint": "next lint",
     "lint:fix": "next lint --fix .",
     "format": "npx prettier --write app",
@@ -21,13 +21,14 @@
   },
   "dependencies": {
     "@types/howler": "^2.2.12",
-    "gsap": "^3.12.5",
+    "framer-motion": "^11.12.0",
     "howler": "^2.2.4",
     "lottie-react": "^2.4.0",
     "next": "15.0.3",
     "particles.js": "^2.0.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-intersection-observer": "^9.13.1"
   },
   "devDependencies": {
     "@types/node": "^20",

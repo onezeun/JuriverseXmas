@@ -1,0 +1,63 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface ChristmasInvitationCardProps {
+  isOpen: boolean;
+}
+
+const InvitationCard: React.FC<ChristmasInvitationCardProps> = ({ isOpen }) => {
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        scale: 0.8,
+        y: 50,
+      }}
+      animate={{
+        opacity: isOpen ? 1 : 0,
+        scale: isOpen ? 1 : 0.8,
+        y: isOpen ? 0 : 50,
+      }}
+      transition={{
+        duration: 0.6,
+        type: 'spring',
+        stiffness: 150,
+        damping: 15,
+      }}
+      className={`mx-16 my-10 h-full rounded-xl border-dashed border-[#C41E3A] bg-white/90 bg-opacity-50 p-5 text-center leading-relaxed shadow-2xl ${!isOpen ? 'pointer-events-none' : ''}`}
+    >
+      <p
+        className="my-2.5 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500 bg-clip-text text-2xl font-extrabold text-transparent"
+        style={{
+          textShadow: '0 0 5px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 228, 0, 0.5)',
+        }}
+      >
+        🎄 주리 공주의 크리스마스 파티 초대장 🎁
+      </p>
+      <div className="space-y-3 text-gray-800">
+        <p className="text-xl font-bold text-green-700">
+          🗓️ <b>언제?</b> 2024년 12월 23일!
+        </p>
+        <p className="text-xl font-bold text-red-700">
+          📍 <b>어디?</b> 따뜻~한 주리 공주의 홈스윗홈 💕
+        </p>
+        <p className="text-xl font-bold text-blue-700">
+          ⏰ <b>몇 시?</b> 다들 퇴근 후에 오시면 딱 좋아요 😘
+        </p>
+        <p className="text-xl font-bold text-purple-700">
+          👗 <b>드레스코드는?</b> 전라로 오세요~ 꺄아 {`><`} (공주님 농담이에요~)
+        </p>
+        <p className="text-xl font-bold text-orange-700">
+          🚫 <b>규칙!</b> 연인 동반은 안돼요~! 🙅‍♀️
+        </p>
+        <p className="text-2xl font-bold text-yellow-600">⭐ Happy Holidays ⭐</p>
+      </div>
+      <span className="absolute left-5 top-5 z-50 animate-float text-2xl">❄️</span>
+      <span className="absolute bottom-5 right-5 z-50 animate-float text-2xl">🎁</span>
+    </motion.div>
+  );
+};
+
+export default InvitationCard;

@@ -15,8 +15,8 @@ const Title = () => {
   }, []);
 
   return (
-    <div className="absolute top-10 flex w-full justify-center">
-      <Lottie animationData={animationData} loop={false} style={{ width: 300, height: 150 }} />
+    <div className="flex h-[100dvh] w-full justify-center">
+      <Lottie animationData={animationData} loop={false} />
     </div>
   );
 };
