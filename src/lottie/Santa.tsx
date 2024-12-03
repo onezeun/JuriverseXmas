@@ -21,8 +21,8 @@ const Santa = () => {
         <Lottie
           lottieRef={lottieSantaRef}
           animationData={animationData}
-          loop={false}
-          style={{ width: '200px', height: '200px' }}
+          loop={true}
+          style={{ width: 'auto', height: '200px' }}
         />
       )}
     </div>

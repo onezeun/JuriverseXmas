@@ -18,7 +18,12 @@ const PoopSanta = () => {
   return (
     <div className="flex w-full items-center justify-center">
       {animationData && (
-        <Lottie lottieRef={lottiePoopSantaRef} animationData={animationData} loop={false} />
+        <Lottie
+          lottieRef={lottiePoopSantaRef}
+          animationData={animationData}
+          loop={false}
+          style={{ width: '400px', height: 'auto' }}
+        />
       )}
     </div>
   );

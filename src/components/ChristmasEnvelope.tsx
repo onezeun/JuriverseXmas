@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import StarryBackground from './StarryBackground';
-import Title from '@/lottie/Title';
 import useObserver from '@/hooks/useObserver';
-import InvitationCard from './InvitationCard';
-import Santa from '@/lottie/Santa';
+import Lottie from 'lottie-react';
 import PoopSanta from '@/lottie/PoopSanta';
+import Santa from '@/lottie/Santa';
 
 const opacityVariants = {
   hidden: { opacity: 0 },
@@ -26,6 +25,18 @@ const ChristmasEnvelope = () => {
   const [isGiftBoxOpen, setIsGiftBoxOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [titleAnimationData, setTitleAnimationData] = useState(null);
+  const [isTitleAnimationFinished, setIsTitleAnimationFinished] = useState(false);
+
+  useEffect(() => {
+    const fetchAnimation = async () => {
+      const response = await fetch('/lottie/title_01.json'); // JSON 파일의 경로
+      const data = await response.json();
+      setTitleAnimationData(data);
+    };
+
+    fetchAnimation();
+  }, []);
 
   // 각각의 섹션에 대해 useObserver 훅을 개별적으로 사용
   const observer1 = useObserver();
@@ -69,7 +80,7 @@ const ChristmasEnvelope = () => {
     }
     return () => {
       if (audioRef.current) {
-        audioRef.current.pause();
+        audioRef.current.play();
         audioRef.current = null;
       }
     };
@@ -77,12 +88,14 @@ const ChristmasEnvelope = () => {
 
   // 편지 클릭
   const handleEnvelopeClick = () => {
-    setIsOpen((prev) => !prev);
-
     // 열리기 전에 animationComplete 초기화
     if (isOpen) {
       setAnimationComplete(false); // 닫힐 때 초기화
+      setTimeout(() => {
+        setIsOpen(false); // 열릴 때 딜레이 후 활성화
+      }, 300); // 800ms 후 true로 설정
     } else {
+      setIsOpen(true);
       setTimeout(() => {
         setAnimationComplete(true); // 열릴 때 딜레이 후 활성화
       }, 800); // 800ms 후 true로 설정
@@ -92,6 +105,10 @@ const ChristmasEnvelope = () => {
   // 선물상자 클릭 핸들러
   const handleGiftBoxClick = () => {
     setIsGiftBoxOpen(!isGiftBoxOpen);
+    setAnimationComplete(false); // 닫힐 때 초기화
+    setTimeout(() => {
+      setIsOpen(false); // 열릴 때 딜레이 후 활성화
+    }, 300); // 800ms 후 true로 설정
   };
 
   const toggleMusic = () => {
@@ -105,82 +122,122 @@ const ChristmasEnvelope = () => {
     }
   };
 
+  const text = '크리스마스';
+  const colors = ['text-green-500', 'text-red-500'];
+
   return (
     <motion.div
       ref={containerRef}
-      className="relative h-[100dvh] w-screen overflow-y-scroll bg-gradient-to-b from-[#2C2A4A] via-[#4A4266] to-[#6B5B95]"
+      className="overfolw-x-hidden relative h-[100dvh] w-screen overflow-y-scroll bg-gradient-to-b from-[#141319] via-[#3a3451] to-[#5c498d]"
     >
       <StarryBackground />
       {/* Section 1: Title */}
       <motion.div
-        ref={observer1.ref}
-        initial="hidden"
-        animate={observer1.animation}
-        variants={opacityVariants}
+        className="absolute"
+        initial={{ y: 0, scale: 1 }}
+        animate={isTitleAnimationFinished ? { y: '-25vh', scale: 0.5 } : { y: 0, scale: 1 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
       >
-        <Title />
+        <Lottie
+          animationData={titleAnimationData}
+          loop={false}
+          className="soft-glow"
+          onComplete={() => setIsTitleAnimationFinished(true)}
+        />
       </motion.div>
 
       {/* Section 2: Envelope */}
       <motion.div
-        ref={observer2.ref}
-        initial="hidden"
-        animate={observer2.animation}
-        variants={opacityVariants}
-        className="flex h-screen flex-col items-center justify-center text-center"
+        initial={{ opacity: 0 }}
+        animate={isTitleAnimationFinished ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="overfolw-x-hidden flex h-[100dvh] flex-col items-center justify-center overflow-x-hidden text-center"
       >
         <motion.div
           initial={{ rotate: -3 }}
-          animate={{ rotate: isOpen ? 0 : -3 }}
-          className="cursor-pointers relative aspect-[4/3] max-h-[400px] w-[80vw] max-w-[540px] rounded-xl border-4 border-[#4e1616] bg-gradient-to-b from-[#F5DEB3] to-[#DEB887] shadow-2xl transition-transform duration-300 hover:scale-105"
+          animate={{
+            rotate: isOpen ? 0 : -3,
+            scale: isOpen ? 1.1 : 1,
+            transition: {
+              duration: 0.5,
+              ease: 'easeInOut',
+            },
+          }}
           onClick={handleEnvelopeClick}
         >
-          {/* 뚜껑 */}
-          <motion.div
-            initial={{ rotateX: 0 }}
-            animate={{ rotateX: isOpen ? -180 : 0 }}
-            transition={{
-              duration: 1,
-              ease: 'easeInOut',
-            }}
-            className="absolute z-[10] h-1/2 w-full origin-top border-b-4 border-[#8B0000] bg-gradient-to-r from-[#C41E3A] to-[#8B0000]"
-            style={{ clipPath: 'polygon(0 0, 50% 100%, 100% 0)' }}
-          />
-          {/* 내부 콘텐츠 */}
-          <div className="relative h-full w-full overflow-hidden">
-            {isOpen && animationComplete ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="h-full w-full overflow-y-auto"
+          <div className="z-50">
+            <div
+              className={`relative mt-52 flex aspect-[4/3] max-h-[380px] w-[70vw] max-w-[700px] items-center justify-center bg-black transition-all duration-700 ${
+                isOpen ? 'cursor-default' : 'cursor-pointer'
+              }`}
+              onClick={handleEnvelopeClick}
+            >
+              {/* 편지 내용 */}
+              <div
+                className={`absolute flex h-[98%] w-[98%] flex-col items-center justify-start bg-white py-5 transition-all duration-300 ${
+                  isOpen && animationComplete ? '-translate-y-36 duration-1000' : ''
+                }`}
               >
-                <Santa />
-                <InvitationCard isOpen={isOpen} />
-              </motion.div>
-            ) : null}
+                <p className="mb-5 text-2xl font-semibold text-black">
+                  🎄 주리 공주👸의{' '}
+                  <span>
+                    {text.split('').map((char, index) => (
+                      <span key={index} className={colors[index % colors.length]}>
+                        {char}
+                      </span>
+                    ))}
+                  </span>
+                  파티 🎁
+                </p>
+                <div className="flex w-full flex-col items-center justify-center">
+                  <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                    <span className="inline-block w-[6.5rem] text-left font-bold">🗓️ 언제?</span>
+                    2024년 12월 23일!
+                  </p>
+                  <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                    <span className="inline-block w-[6.5rem] text-left font-bold">📍 어디?</span>
+                    주리 공주 홈스윗홈 💕
+                  </p>
+                  <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                    <span className="inline-block w-[6.5rem] text-left font-bold">⏰ 몇 시?</span>
+                    퇴근 후 핫한 밤 😘
+                  </p>
+                  <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                    <span className="inline-block w-[6.5rem] text-left font-bold">
+                      👗 드레스코드?
+                    </span>
+                    전라로 오세요~ 🎅 <br />
+                    <span className="ml-[6.5rem] text-sm text-neutral-500">
+                      (공주님 농담이에요!)
+                    </span>
+                  </p>
+                  <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                    <span className="inline-block w-[6.5rem] text-left font-bold">🚫 규칙!</span>{' '}
+                    연인 동반은 안돼~ 🙅‍♀️
+                  </p>
+                  <p className="pt-5 font-serif text-gray-700">⭐ Happy Holidays ⭐</p>
+                </div>
+              </div>
+              {!isOpen && (
+                <button className="seal z-40 flex aspect-square w-16 items-center justify-center rounded-full border-4 border-rose-900 bg-rose-500 font-serif font-semibold text-red-800 transition-all duration-1000 [clip-path:polygon(50%_0%,_80%_10%,_100%_35%,_100%_70%,_80%_90%,_50%_100%,_20%_90%,_0%_70%,_0%_35%,_20%_10%)]">
+                  JURI
+                </button>
+              )}
+              <div
+                className={`tp absolute h-full w-full bg-neutral-800 transition-all duration-1000 ${
+                  isOpen
+                    ? '[clip-path:polygon(50%_0%,_100%_0,_0_0)]'
+                    : '[clip-path:polygon(50%_50%,_100%_0,_0_0)]'
+                }`}
+              />
+              <div className="lft absolute h-full w-full bg-neutral-900 transition-all duration-700 [clip-path:polygon(50%_50%,_0_0,_0_100%)]" />
+              <div className="rgt absolute h-full w-full bg-neutral-800 transition-all duration-700 [clip-path:polygon(50%_50%,_100%_0,_100%_100%)]" />
+              <div className="btm absolute h-full w-full bg-neutral-900 transition-all duration-700 [clip-path:polygon(50%_50%,_100%_100%,_0_100%)]" />
+            </div>
           </div>
         </motion.div>
-        <p className="relative mt-5 text-lg text-gray-300 opacity-80 drop-shadow-md">
-          편지를 클릭해보세요!
-        </p>
-      </motion.div>
-
-      {/* Section 3: Final Message */}
-      <motion.div
-        ref={observer3.ref}
-        initial="hidden"
-        animate={observer3.animation}
-        variants={opacityVariants}
-        className="flex h-screen snap-start flex-col items-center justify-center"
-      >
-        <div className="text-center text-white">
-          <h1 className="mb-4 text-4xl font-bold">함께 축하해 주세요!</h1>
-          <p className="text-lg">
-            당신과 함께하는 순간이 <br /> 우리에게 가장 큰 기쁨입니다.
-          </p>
-          {/* 선물상자와 PoopSanta */}
-          <div className="mt-10 flex items-center justify-center">
+        <div className="flex h-96 flex-col items-center justify-center">
+          <div>
             {isGiftBoxOpen ? (
               // 선물상자가 열렸을 때 PoopSanta 컴포넌트 표시
               <motion.div
@@ -188,25 +245,60 @@ const ChristmasEnvelope = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 onClick={handleGiftBoxClick}
+                className={`${isGiftBoxOpen ? 'mt-36' : ''} overfolw-x-hidden`}
               >
                 <PoopSanta />
               </motion.div>
             ) : (
               // 선물상자 표시
-              <motion.div
-                initial={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-red-500 shadow-lg"
-                onClick={handleGiftBoxClick}
+              <div
+                className={`overfolw-x-hidden flex items-end justify-center ${isGiftBoxOpen ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
               >
-                🎁 {/* 선물상자 이모지 또는 선물상자 컴포넌트 */}
-              </motion.div>
+                <Santa />
+                <div className="-ml-5">
+                  <motion.div
+                    initial={{ opacity: 1, scale: 1 }}
+                    animate={{
+                      y: [0, -10, 0], // 기본 bounce 애니메이션
+                    }}
+                    transition={{
+                      duration: 0.8, // bounce 애니메이션 속도
+                      repeat: Infinity, // 무한 반복
+                      repeatType: 'loop',
+                    }}
+                    whileHover={{
+                      y: 0, // 호버 중 바운스 애니메이션 멈춤
+                      x: [0, -10, 10, -10, 10, 0], // 좌우 흔들림
+                      transition: {
+                        duration: 0.5,
+                        ease: 'easeInOut',
+                      },
+                    }}
+                    className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white text-2xl shadow-lg"
+                    onClick={handleGiftBoxClick}
+                  >
+                    <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-red-500" />
+                    <div className="absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 transform bg-red-500" />
+                    <div className="z-50">🎀</div>
+                  </motion.div>
+                  <p className="mt-1">주리 공주 선물</p>
+                </div>
+              </div>
             )}
           </div>
         </div>
       </motion.div>
+
+      {/* Section 3: Final Message */}
+      {/* <motion.div
+        ref={observer3.ref}
+        initial="hidden"
+        animate={observer3.animation}
+        variants={opacityVariants}
+        className="flex h-screen snap-start flex-col items-center justify-center"
+      >
+
+      </motion.div> */}
 
       {/* Background music button */}
       <button
