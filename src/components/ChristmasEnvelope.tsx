@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import StarryBackground from './StarryBackground';
-import useObserver from '@/hooks/useObserver';
 import Lottie from 'lottie-react';
 import PoopSanta from '@/lottie/PoopSanta';
 import Santa from '@/lottie/Santa';
@@ -37,11 +36,6 @@ const ChristmasEnvelope = () => {
 
     fetchAnimation();
   }, []);
-
-  // 각각의 섹션에 대해 useObserver 훅을 개별적으로 사용
-  const observer1 = useObserver();
-  const observer2 = useObserver();
-  const observer3 = useObserver();
 
   // 눈내리는 애니메이션 효과
   const createSnowflake = useCallback(() => {
