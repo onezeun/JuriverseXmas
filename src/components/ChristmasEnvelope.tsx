@@ -134,7 +134,14 @@ const ChristmasEnvelope = () => {
         <motion.div
           className="absolute left-0 top-0 transform"
           initial={{ top: 0, scale: 1 }}
-          animate={isTitleAnimationFinished ? { top: '-100px', scale: 0.5 } : { top: 0, scale: 1 }}
+          animate={
+            isTitleAnimationFinished
+              ? {
+                  top: window.innerWidth >= 768 ? '-350px' : '-100px',
+                  scale: 0.5,
+                }
+              : { top: 0, scale: 1 }
+          }
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
           <Lottie
@@ -176,44 +183,65 @@ const ChristmasEnvelope = () => {
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
-                  <p className="mb-5 text-2xl font-semibold text-black">
-                    🎄 주리 공주👸의{' '}
-                    <span>
-                      {text.split('').map((char, index) => (
-                        <span key={index} className={colors[index % colors.length]}>
-                          {char}
+                  <div className="animate-border-pulse pointer-events-none absolute inset-0 border-4 border-dotted">
+                    <div className="absolute left-0 right-0 top-0 h-0 border-t-4 border-dotted border-green-700"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-4 border-dotted border-green-700"></div>
+                    <div className="absolute bottom-0 left-0 top-0 w-0 border-l-4 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 right-0 top-0 w-0 border-r-4 border-dotted border-red-700"></div>
+                  </div>
+
+                  <div
+                    className={`relative flex flex-col items-center justify-start bg-white py-5 transition-all duration-300`}
+                  >
+                    <p className="mb-5 text-2xl font-semibold text-black">
+                      🎄 주리 공주👸의{' '}
+                      <span>
+                        {text.split('').map((char, index) => (
+                          <span key={index} className={colors[index % colors.length]}>
+                            {char}
+                          </span>
+                        ))}
+                      </span>
+                      파티 🎁
+                    </p>
+                    <div className="flex w-full flex-col items-center justify-center text-sm">
+                      <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                          🗓️ 언제?
+                        </span>{' '}
+                        2024년 12월 23일!
+                      </p>
+                      <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                          📍 어디?
+                        </span>{' '}
+                        주리 공주 홈스윗홈 💕
+                      </p>
+                      <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                          ⏰ 몇 시?
+                        </span>{' '}
+                        퇴근 후 핫한 밤 😘
+                      </p>
+                      <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                          {' '}
+                          👗 드레스코드?{' '}
+                        </span>{' '}
+                        전라로 오세요~ 🎅 <br />
+                        <span className="ml-[6.5rem] text-xs text-neutral-500">
+                          {' '}
+                          (공주님 농담이에요!){' '}
                         </span>
-                      ))}
-                    </span>
-                    파티 🎁
-                  </p>
-                  <div className="flex w-full flex-col items-center justify-center text-sm">
-                    <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                      <span className="inline-block w-[6.5rem] text-left font-bold">🗓️ 언제?</span>
-                      2024년 12월 23일!
-                    </p>
-                    <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                      <span className="inline-block w-[6.5rem] text-left font-bold">📍 어디?</span>
-                      주리 공주 홈스윗홈 💕
-                    </p>
-                    <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                      <span className="inline-block w-[6.5rem] text-left font-bold">⏰ 몇 시?</span>
-                      퇴근 후 핫한 밤 😘
-                    </p>
-                    <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                      <span className="inline-block w-[6.5rem] text-left font-bold">
-                        👗 드레스코드?
-                      </span>
-                      전라로 오세요~ 🎅 <br />
-                      <span className="ml-[6.5rem] text-xs text-neutral-500">
-                        (공주님 농담이에요!)
-                      </span>
-                    </p>
-                    <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                      <span className="inline-block w-[6.5rem] text-left font-bold">🚫 규칙!</span>{' '}
-                      연인 동반은 안돼~ 🙅‍♀️
-                    </p>
-                    <p className="pt-5 font-serif text-gray-700">⭐ Happy Holidays ⭐</p>
+                      </p>
+                      <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                          🚫 규칙!
+                        </span>{' '}
+                        연인 동반은 안돼~ 🙅‍♀️
+                      </p>
+                      <p className="pt-5 font-serif text-gray-700">⭐ Happy Holidays ⭐</p>
+                    </div>
                   </div>
                 </div>
                 {!isOpen && (

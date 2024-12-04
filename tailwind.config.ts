@@ -10,10 +10,11 @@ export default {
   theme: {
     extend: {
       animation: {
-        float: 'float 3s infinite ease-in-out',
-        twinkle: 'twinkle 1.5s infinite ease-in-out',
-        fall: 'fall linear infinite',
-        bounce: 'bounce 2s infinite',
+        'float': 'float 3s infinite ease-in-out',
+        'twinkle': 'twinkle 1.5s infinite ease-in-out',
+        'fall': 'fall linear infinite',
+        'bounce': 'bounce 2s infinite',
+        'border-pulse': 'border-pulse 2s infinite',
       },
       backgroundImage: {
         pattern: `linear-gradient(45deg, #e9ecef 25%, transparent 25%),
@@ -40,6 +41,12 @@ export default {
       },
       backgroundSize: {
         pattern: '20px 20px',
+      },
+      keyframes: {
+        'border-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
       },
     },
   },
