@@ -276,7 +276,7 @@ const ChristmasEnvelope = () => {
               </motion.div>
             ) : (
               // 선물상자 표시
-              <div className="mx-auto flex w-full items-end justify-center gap-[-2rem]">
+              <div className="mx-auto flex w-full items-end justify-center">
                 <Santa />
                 <div className="flex flex-col items-center justify-center">
                   <motion.div
@@ -310,7 +310,7 @@ const ChristmasEnvelope = () => {
                       className="z-50"
                     />
                   </motion.div>
-                  <p className="mt-2 text-sm text-white">주리 공주 선물</p>
+                  <p className="mt-2 mb-5 text-sm text-white">주리 공주 선물</p>
                 </div>
               </div>
             )}
@@ -321,7 +321,7 @@ const ChristmasEnvelope = () => {
         <div className="fixed right-5 top-5 z-[3] flex items-center justify-center text-sm md:text-xl">
           <span>크리스마스 송 듣기 → </span>
           <button
-            className="ml-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/50 text-xl backdrop-blur-md transition-transform duration-300 hover:scale-110 md:h-12 md:w-12 md:text-2xl"
+            className="ml-3 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-white/50 text-2xl backdrop-blur-md transition-transform duration-300 hover:scale-110"
             onClick={toggleMusic}
           >
             {isMusicPlaying ? '🔇' : '🎵'}
