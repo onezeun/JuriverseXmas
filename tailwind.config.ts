@@ -33,6 +33,11 @@ export default {
         'gray_300': '#D1D5DB',
         'gray_500': '#6B7280',
       },
+      screens: {
+        csm: { min: '0px', max: '540px' }, // 모바일: 0px부터 540px까지
+        cmd: { min: '541px', max: '1080px' }, // 중간 화면: 541px부터 1023px까지
+        clg: { min: '1081px' }, // 데스크탑: 1024px 이상
+      },
       backgroundSize: {
         pattern: '20px 20px',
       },

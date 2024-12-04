@@ -36,6 +36,33 @@ input:focus {
   outline: none;
 }
 
+/* 기본 폰트 사이즈 */
+html {
+  font-size: 16px;
+}
+
+/* 모바일 (작은 화면) */
+@media (max-width: 480px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+/* 태블릿 (중간 화면) */
+@media (min-width: 481px) and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* 작은 데스크톱 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
 @font-face {
   font-family: 'RixXladywatermelonR';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-4@1.0/RixXladywatermelonR.woff2')
