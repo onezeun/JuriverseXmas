@@ -6,6 +6,7 @@ import StarryBackground from './StarryBackground';
 import Lottie from 'lottie-react';
 import PoopSanta from '@/lottie/PoopSanta';
 import Santa from '@/lottie/Santa';
+import Image from 'next/image';
 
 const ChristmasEnvelope = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -302,9 +303,15 @@ const ChristmasEnvelope = () => {
                     className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white text-2xl shadow-lg"
                     onClick={handleGiftBoxClick}
                   >
-                    <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-red-500" />
-                    <div className="absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 transform bg-red-500" />
-                    <div className="z-50">🎀</div>
+                    <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-[#DD2E44]" />
+                    <div className="absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 transform bg-[#DD2E44]" />
+                    <Image
+                      src="/images/ribbon.png"
+                      alt="ribbon image"
+                      width={25}
+                      height={25}
+                      className="z-50"
+                    />
                   </motion.div>
                   <p className="mt-1">주리 공주 선물</p>
                 </div>
