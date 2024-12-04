@@ -277,7 +277,7 @@ const ChristmasEnvelope = () => {
               </motion.div>
             ) : (
               // 선물상자 표시
-              <div className="flex w-full items-end justify-center -space-x-8">
+              <div className="flex w-full items-end justify-center -space-x-8 mx-auto">
                 <Santa />
                 <div className="flex flex-col items-center">
                   <motion.div
