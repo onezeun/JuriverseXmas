@@ -127,10 +127,7 @@ const ChristmasEnvelope = () => {
   return (
     <div className="h-[100dvh] w-screen bg-gradient-to-b from-[#141319] via-[#3a3451] to-[#5c498d]">
       <StarryBackground />
-      <motion.div
-        ref={containerRef}
-        className="overfolw-x-hidden relative mx-auto max-w-[1080px] overflow-y-scroll"
-      >
+      <motion.div ref={containerRef} className="relative mx-auto max-w-[1080px] px-4">
         {/* Section 1: Title */}
         <motion.div
           className="absolute left-0 top-0 transform"
@@ -184,11 +181,11 @@ const ChristmasEnvelope = () => {
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
-                  <div className="animate-border-pulse pointer-events-none absolute inset-0 border-4 border-dotted">
-                    <div className="absolute left-0 right-0 top-0 h-0 border-t-4 border-dotted border-green-700"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-4 border-dotted border-green-700"></div>
-                    <div className="absolute bottom-0 left-0 top-0 w-0 border-l-4 border-dotted border-red-700"></div>
-                    <div className="absolute bottom-0 right-0 top-0 w-0 border-r-4 border-dotted border-red-700"></div>
+                  <div className="animate-border-pulse pointer-events-none absolute inset-0 border-2 border-dotted">
+                    <div className="absolute left-0 right-0 top-0 h-0 border-t-2 border-dotted border-green-700"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-2 border-dotted border-green-700"></div>
+                    <div className="absolute bottom-0 left-0 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 right-0 top-0 w-0 border-r-2 border-dotted border-red-700"></div>
                   </div>
 
                   <div
@@ -263,7 +260,10 @@ const ChristmasEnvelope = () => {
               </div>
             </div>
           </motion.div>
-          <div className="flex h-96 flex-col items-center justify-center" ref={giftBoxRef}>
+          <div
+            className="flex h-96 flex-col items-center justify-center space-y-4"
+            ref={giftBoxRef}
+          >
             {isGiftBoxOpen ? (
               // 선물상자가 열렸을 때 PoopSanta 컴포넌트 표시
               <motion.div
@@ -277,9 +277,9 @@ const ChristmasEnvelope = () => {
               </motion.div>
             ) : (
               // 선물상자 표시
-              <div className="relative flex w-full items-end justify-center">
+              <div className="flex w-full items-end justify-center -space-x-8">
                 <Santa />
-                <div className="ml-0">
+                <div className="flex flex-col items-center">
                   <motion.div
                     initial={{ opacity: 1, scale: 1 }}
                     animate={{
@@ -298,7 +298,7 @@ const ChristmasEnvelope = () => {
                         ease: 'easeInOut',
                       },
                     }}
-                    className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white text-2xl shadow-lg"
+                    className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white text-xl shadow-lg"
                     onClick={handleGiftBoxClick}
                   >
                     <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-[#ff425b]" />
@@ -311,7 +311,7 @@ const ChristmasEnvelope = () => {
                       className="z-50"
                     />
                   </motion.div>
-                  <p className="mt-1 text-center">주리 공주 선물</p>
+                  <p className="mt-2 text-sm text-white">주리 공주 선물</p>
                 </div>
               </div>
             )}
@@ -319,12 +319,10 @@ const ChristmasEnvelope = () => {
         </motion.div>
 
         {/* Background music button */}
-        <div className="fixed right-5 top-5 z-[3] flex items-center justify-center text-xl">
-          <span className="">
-            크리스마스 송 듣기 → {/* <span className="text-sm"> (조금시끄러울지도)</span> */}
-          </span>
+        <div className="fixed right-5 top-5 z-[3] flex items-center justify-center text-sm md:text-xl">
+          <span className="hidden md:inline">크리스마스 송 듣기 → </span>
           <button
-            className="ml-3 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white/50 text-2xl backdrop-blur-md transition-transform duration-300 hover:scale-110"
+            className="ml-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/50 text-xl backdrop-blur-md transition-transform duration-300 hover:scale-110 md:h-12 md:w-12 md:text-2xl"
             onClick={toggleMusic}
           >
             {isMusicPlaying ? '🔇' : '🎵'}
