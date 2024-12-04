@@ -127,7 +127,7 @@ const ChristmasEnvelope = () => {
   return (
     <div className="h-[100dvh] w-screen bg-gradient-to-b from-[#141319] via-[#3a3451] to-[#5c498d]">
       <StarryBackground />
-      <motion.div ref={containerRef} className="relative mx-auto max-w-[1080px] px-4">
+      <motion.div ref={containerRef} className="relative mx-auto max-w-[1080px]">
         {/* Section 1: Title */}
         <motion.div
           className="absolute left-0 top-0 transform"
