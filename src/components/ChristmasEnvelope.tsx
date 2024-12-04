@@ -277,24 +277,22 @@ const ChristmasEnvelope = () => {
               </motion.div>
             ) : (
               // 선물상자 표시
-              <div
-                className={`overfolw-x-hidden flex items-end justify-center ${isGiftBoxOpen ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
-              >
+              <div className="relative flex w-full items-end justify-center">
                 <Santa />
-                <div className="-ml-5">
+                <div className="ml-0">
                   <motion.div
                     initial={{ opacity: 1, scale: 1 }}
                     animate={{
-                      y: [0, -10, 0], // 기본 bounce 애니메이션
+                      y: [0, -10, 0],
                     }}
                     transition={{
-                      duration: 0.8, // bounce 애니메이션 속도
-                      repeat: Infinity, // 무한 반복
+                      duration: 0.8,
+                      repeat: Infinity,
                       repeatType: 'loop',
                     }}
                     whileHover={{
-                      y: 0, // 호버 중 바운스 애니메이션 멈춤
-                      x: [0, -10, 10, -10, 10, 0], // 좌우 흔들림
+                      y: 0,
+                      x: [0, -10, 10, -10, 10, 0],
                       transition: {
                         duration: 0.5,
                         ease: 'easeInOut',
@@ -303,8 +301,8 @@ const ChristmasEnvelope = () => {
                     className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-lg bg-white text-2xl shadow-lg"
                     onClick={handleGiftBoxClick}
                   >
-                    <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-[#DD2E44]" />
-                    <div className="absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 transform bg-[#DD2E44]" />
+                    <div className="absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform bg-[#ff425b]" />
+                    <div className="absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 transform bg-[#ff425b]" />
                     <Image
                       src="/images/ribbon.png"
                       alt="ribbon image"
@@ -313,7 +311,7 @@ const ChristmasEnvelope = () => {
                       className="z-50"
                     />
                   </motion.div>
-                  <p className="mt-1">주리 공주 선물</p>
+                  <p className="mt-1 text-center">주리 공주 선물</p>
                 </div>
               </div>
             )}
