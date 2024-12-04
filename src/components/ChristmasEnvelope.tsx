@@ -102,8 +102,8 @@ const ChristmasEnvelope = () => {
     if (isGiftBoxOpen && giftBoxRef.current) {
       setTimeout(() => {
         giftBoxRef.current!.scrollIntoView({
-          behavior: 'smooth', 
-          block: 'center', 
+          behavior: 'smooth',
+          block: 'center',
         });
         window.scrollBy(0, 100);
       }, 50);
@@ -182,12 +182,11 @@ const ChristmasEnvelope = () => {
                   }`}
                 >
                   <div className="pointer-events-none absolute inset-0 border-2 border-dotted border-green-700">
-                    <div className="absolute left-0 right-0 top-0 h-0 border-t-2 border-dotted border-red-700"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-2 border-dotted border-red-700"></div>
-                    <div className="absolute bottom-0 left-0 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
-                    <div className="absolute bottom-0 right-0 top-0 w-0 border-r-2 border-dotted border-red-700"></div>
+                    <div className="absolute left-0 right-1 top-1 h-0 border-t-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-1 left-0 right-0 h-0 border-t-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 left-1 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 right-1 top-0 w-0 border-r-2 border-dotted border-red-700"></div>
                   </div>
-
                   <div
                     className={`relative flex flex-col items-center justify-start bg-white py-5 transition-all duration-300`}
                   >

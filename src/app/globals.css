@@ -36,6 +36,10 @@ input:focus {
   outline: none;
 }
 
+body, html {
+  overflow-y: auto;
+}
+
 /* 기본 폰트 사이즈 */
 html {
   font-size: 16px;
@@ -136,7 +140,10 @@ body {
 .soft-glow {
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
     drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  -webkit-filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
   animation: softGlow 2s infinite ease-in-out;
+  -webkit-animation: softGlow 2s infinite ease-in-out;
 }
 
 @keyframes softGlow {
@@ -144,9 +151,25 @@ body {
   100% {
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
       drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+    -webkit-filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
   }
   50% {
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7))
+      drop-shadow(0 0 40px rgba(255, 255, 255, 0.5));
+    -webkit-filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7))
+      drop-shadow(0 0 40px rgba(255, 255, 255, 0.5));
+  }
+}
+
+@-webkit-keyframes softGlow {
+  0%,
+  100% {
+    -webkit-filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    -webkit-filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7))
       drop-shadow(0 0 40px rgba(255, 255, 255, 0.5));
   }
 }
