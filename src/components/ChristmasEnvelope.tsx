@@ -135,7 +135,7 @@ const ChristmasEnvelope = () => {
           animate={
             isTitleAnimationFinished
               ? {
-                  top: window.innerWidth >= 768 ? '-350px' : '-100px',
+                  top: window.innerWidth >= 768 ? '-300px' : '-100px',
                   scale: 0.5,
                 }
               : { top: 0, scale: 1 }
@@ -177,7 +177,7 @@ const ChristmasEnvelope = () => {
               >
                 {/* 편지 내용 */}
                 <div
-                  className={`absolute flex h-[98%] w-[98%] flex-col items-center justify-start bg-white py-5 transition-all duration-300 ${
+                  className={`absolute flex h-[98%] w-[95%] flex-col items-center justify-start bg-white py-5 transition-all duration-300 ${
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
@@ -320,7 +320,7 @@ const ChristmasEnvelope = () => {
 
         {/* Background music button */}
         <div className="fixed right-5 top-5 z-[3] flex items-center justify-center text-sm md:text-xl">
-          <span className="hidden md:inline">크리스마스 송 듣기 → </span>
+          <span>크리스마스 송 듣기 → </span>
           <button
             className="ml-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/50 text-xl backdrop-blur-md transition-transform duration-300 hover:scale-110 md:h-12 md:w-12 md:text-2xl"
             onClick={toggleMusic}

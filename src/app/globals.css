@@ -44,14 +44,14 @@ html {
 /* 모바일 (작은 화면) */
 @media (max-width: 480px) {
   html {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
 /* 태블릿 (중간 화면) */
 @media (min-width: 481px) and (max-width: 768px) {
   html {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
