@@ -16,13 +16,13 @@ const Santa = () => {
   }, []);
 
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="flex items-center justify-center">
       {animationData && (
         <Lottie
           lottieRef={lottieSantaRef}
           animationData={animationData}
           loop={true}
-          style={{ width: 'auto', height: '200px' }}
+          style={{ width: 'auto', height: '200px', maxWidth: '190px' }}
         />
       )}
     </div>

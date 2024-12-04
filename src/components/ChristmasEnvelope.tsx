@@ -260,7 +260,7 @@ const ChristmasEnvelope = () => {
             </div>
           </motion.div>
           <div
-            className="flex h-96 flex-col items-center justify-center space-y-4"
+            className="flex h-96 flex-col items-center justify-center space-y-4 w-[50%]"
             ref={giftBoxRef}
           >
             {isGiftBoxOpen ? (
