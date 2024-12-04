@@ -170,7 +170,7 @@ const ChristmasEnvelope = () => {
           >
             <div className="z-50">
               <div
-                className={`relative mt-80 flex aspect-[4/3] max-h-[380px] w-[70vw] max-w-[700px] items-center justify-center bg-black transition-all duration-700 ${
+                className={`relative mt-80 flex aspect-[4/3] max-h-[380px] w-[80vw] max-w-[700px] items-center justify-center bg-black transition-all duration-700 ${
                   isOpen ? 'cursor-default' : 'cursor-pointer'
                 }`}
                 onClick={handleEnvelopeClick}
@@ -181,16 +181,16 @@ const ChristmasEnvelope = () => {
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
-                  <div className="pointer-events-none absolute inset-0 border-2 border-dotted border-green-700">
-                    <div className="absolute left-0 right-1 top-1 h-0 border-t-2 border-dotted border-red-700"></div>
+                  <div className="pointer-events-none absolute inset-0 border-2 border-dotted border-red-700">
+                    {/* <div className="absolute left-0 right-1 top-1 h-0 border-t-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-1 left-0 right-0 h-0 border-t-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-0 left-1 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
-                    <div className="absolute bottom-0 right-1 top-0 w-0 border-r-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 right-1 top-0 w-0 border-r-2 border-dotted border-red-700"></div> */}
                   </div>
                   <div
                     className={`relative flex flex-col items-center justify-start bg-white py-5 transition-all duration-300`}
                   >
-                    <p className="mb-5 text-2xl font-semibold text-black">
+                    <p className="mb-5 text-3xl font-semibold text-black">
                       🎄 주리 공주👸의{' '}
                       <span>
                         {text.split('').map((char, index) => (
@@ -201,9 +201,9 @@ const ChristmasEnvelope = () => {
                       </span>
                       파티 🎁
                     </p>
-                    <div className="flex w-full flex-col items-center justify-center text-sm">
+                    <div className="flex w-full flex-col items-center justify-center text-base">
                       <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                        <span className="inline-block w-[6.5rem] text-left font-bold">
+                        <span className="inline-block w-[6.5rem] text-left font-bold text-lg">
                           🗓️ 언제?
                         </span>{' '}
                         2024년 12월 23일!
@@ -226,7 +226,7 @@ const ChristmasEnvelope = () => {
                           👗 드레스코드?{' '}
                         </span>{' '}
                         전라로 오세요~ 🎅 <br />
-                        <span className="ml-[6.5rem] text-xs text-neutral-500">
+                        <span className="ml-[6.5rem] text-sm text-neutral-500">
                           {' '}
                           (공주님 농담이에요!){' '}
                         </span>
