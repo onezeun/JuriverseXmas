@@ -62,7 +62,6 @@ html {
   }
 }
 
-
 @font-face {
   font-family: 'RixXladywatermelonR';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-4@1.0/RixXladywatermelonR.woff2')
@@ -135,6 +134,10 @@ body {
 
 .soft-glow {
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  -webkit-filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  -moz-filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
     drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
   animation: softGlow 2s infinite ease-in-out;
 }
