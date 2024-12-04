@@ -98,15 +98,15 @@ const ChristmasEnvelope = () => {
       }, 300); // 300ms 후 실행
     }
   };
-
   useEffect(() => {
     if (isGiftBoxOpen && giftBoxRef.current) {
       setTimeout(() => {
         giftBoxRef.current!.scrollIntoView({
-          behavior: 'smooth', // 부드러운 스크롤
-          block: 'center', // 화면 중앙에 위치
+          behavior: 'smooth', 
+          block: 'center', 
         });
-      }, 50); // 렌더링이 완료된 후 실행
+        window.scrollBy(0, 100);
+      }, 50);
     }
   }, [isGiftBoxOpen]);
 
@@ -181,9 +181,9 @@ const ChristmasEnvelope = () => {
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
-                  <div className="animate-border-pulse pointer-events-none absolute inset-0 border-2 border-dotted">
-                    <div className="absolute left-0 right-0 top-0 h-0 border-t-2 border-dotted border-green-700"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-2 border-dotted border-green-700"></div>
+                  <div className="pointer-events-none absolute inset-0 border-2 border-dotted border-green-700">
+                    <div className="absolute left-0 right-0 top-0 h-0 border-t-2 border-dotted border-red-700"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0 border-t-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-0 left-0 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-0 right-0 top-0 w-0 border-r-2 border-dotted border-red-700"></div>
                   </div>
@@ -277,9 +277,9 @@ const ChristmasEnvelope = () => {
               </motion.div>
             ) : (
               // 선물상자 표시
-              <div className="flex w-full items-end justify-center -space-x-8 mx-auto">
+              <div className="mx-auto flex w-full items-end justify-center gap-[-2rem]">
                 <Santa />
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center justify-center">
                   <motion.div
                     initial={{ opacity: 1, scale: 1 }}
                     animate={{
