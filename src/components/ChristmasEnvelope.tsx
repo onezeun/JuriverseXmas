@@ -106,7 +106,7 @@ const ChristmasEnvelope = () => {
           block: 'center',
         });
         window.scrollBy(0, 100);
-      }, 50);
+      }, 100);
     }
   }, [isGiftBoxOpen]);
 
