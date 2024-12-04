@@ -203,7 +203,7 @@ const ChristmasEnvelope = () => {
                     </p>
                     <div className="flex w-full flex-col items-center justify-center text-base">
                       <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
-                        <span className="inline-block w-[6.5rem] text-left font-bold text-lg">
+                        <span className="inline-block w-[6.5rem] text-left font-bold">
                           🗓️ 언제?
                         </span>{' '}
                         2024년 12월 23일!
