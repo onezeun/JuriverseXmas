@@ -206,7 +206,7 @@ const ChristmasEnvelope = () => {
                         <span className="inline-block w-[6.5rem] text-left font-bold">
                           🗓️ 언제?
                         </span>{' '}
-                        2024년 12월 23일!
+                        2025년 12월 24일!
                       </p>
                       <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
                         <span className="inline-block w-[6.5rem] text-left font-bold">
