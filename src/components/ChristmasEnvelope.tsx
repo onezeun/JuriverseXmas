@@ -181,14 +181,14 @@ const ChristmasEnvelope = () => {
                     isOpen && animationComplete ? '-translate-y-48 duration-1000' : ''
                   }`}
                 >
-                  <div className="pointer-events-none absolute inset-0 border-2 border-dotted border-red-700">
+                  <div className="rainbow-border pointer-events-none absolute inset-0">
                     {/* <div className="absolute left-0 right-1 top-1 h-0 border-t-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-1 left-0 right-0 h-0 border-t-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-0 left-1 top-0 w-0 border-l-2 border-dotted border-red-700"></div>
                     <div className="absolute bottom-0 right-1 top-0 w-0 border-r-2 border-dotted border-red-700"></div> */}
                   </div>
                   <div
-                    className={`relative flex flex-col items-center justify-start bg-white py-5 transition-all duration-300`}
+                    className={`relative flex flex-col items-center justify-start py-5 transition-all duration-300`}
                   >
                     <p className="mb-5 text-3xl font-semibold text-black">
                       🎄 주리 공주👸의{' '}
@@ -206,7 +206,7 @@ const ChristmasEnvelope = () => {
                         <span className="inline-block w-[6.5rem] text-left font-bold">
                           🗓️ 언제?
                         </span>{' '}
-                        2025년 12월 24일!
+                        2025년 12월 25일!
                       </p>
                       <p className="my-0.5 w-[15.5rem] text-left text-gray-700">
                         <span className="inline-block w-[6.5rem] text-left font-bold">
@@ -260,7 +260,7 @@ const ChristmasEnvelope = () => {
             </div>
           </motion.div>
           <div
-            className="flex h-96 flex-col items-center justify-center space-y-4 w-[50%]"
+            className="flex h-96 w-[50%] flex-col items-center justify-center space-y-4"
             ref={giftBoxRef}
           >
             {isGiftBoxOpen ? (
@@ -310,7 +310,7 @@ const ChristmasEnvelope = () => {
                       className="z-50"
                     />
                   </motion.div>
-                  <p className="mt-2 mb-5 text-sm text-white">주리 공주 선물</p>
+                  <p className="mb-5 mt-2 text-sm text-white">주리 공주 선물</p>
                 </div>
               </div>
             )}
